@@ -1,0 +1,49 @@
+<odoo>
+ <data>
+     
+    <report
+        id="report_activity"
+        model="proyectosge.activity"
+        string="Session Report"
+        name="proyectosge.report_activity_view"
+        file="proyectosge.report_activity"
+        report_type="qweb-pdf" />
+    <!--Template definition-->    
+    <template id="report_activity_view">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="report.external_layout">
+                    <div class="page">
+                        <h1>Activity:</h1>
+                        <span style="fontsize = 30">
+                            <a>Date:</a>
+                            <a t-field="doc.date" />
+                        </span>
+                        <br/>
+                        <span>
+                            <a> Description:</a>
+                            <a t-field="doc.description"/>
+                        </span>
+                        <br/>
+                        <span>
+                            <a>Duration:</a>
+                            <a t-field="doc.duration"/>
+                            <a>h</a>
+                        </span>
+                        <br/>
+                        <span>
+                            <a>Remarks:</a>
+                            <a t-field="doc.remarks"/>
+                        </span>
+                        <br/>
+                        <span>
+                            <a>Owner:</a>
+                            <a t-field="doc.owner"/>
+                        </span>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+ </data>
+</odoo>

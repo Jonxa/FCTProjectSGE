@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+      
+        <record model="ir.ui.view" id="activity_form_view">
+            <field name="name">Activity.form</field>
+            <field name="model">proyectosge.activity</field>
+            <field name="arch" type="xml">
+                <form string="Activity Form">
+                    <sheet>
+                        <group string="Activity">
+                            <field name="date"/>
+                            <field name="description"/>
+                            <field name="duration"/>
+                            <field name="remarks"/>
+                            <field name="owner"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+	</record>
+        
+        <!--record id="activities_pupils_rule" model="ir.rule">
+            <field name="name">Pupil Rule</field>
+            <field name="model_id232123" ref="activity_form_view"/>
+            <field name="domain_force">[('owner', '=', proyectosge.activity.pupil)]</field>
+        </record-->
+        
+        <!-- search view meterle entre fechas 
+        La busqueda entre fechas -->
+        <record model="ir.ui.view" id="activity_search_view">
+            <field name="name">activity.search</field>
+            <field name="model">proyectosge.activity</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="description"/>
+                    <filter string="This Year" 
+                            name="thisyear"
+                            domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',time.strftime('%%Y-01-01'))]" 
+                            help="Activities with period in current year" />
+                    <filter name="alumno" string="Alumno" context="{'group_by': 'owner'}" />
+                </search>
+            </field>
+        </record>
+      
+           <!-- session tree/list view -->
+        <record model="ir.ui.view" id="activity_tree_view">
+            <field name="name">activity.tree</field>
+            <field name="model">proyectosge.activity</field>
+            <field name="arch" type="xml">
+            <tree string="Activity Tree">
+                <field name="date"/>
+                <field name="description"/>
+                <field name="duration"/>
+            </tree>
+           </field>
+        </record>
+        <record model="ir.actions.act_window" id="activity_list_action">
+            <field name="name">Activities</field>
+            <field name="res_model">proyectosge.activity</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create the first activity
+                </p>
+            </field>
+        </record>
+        
+        <!-- top level menu: no parent -->
+        <menuitem id="main_proyectojonxa_menu"
+                  name="Proyecto Jonxa"/>
+        <!-- A first level in the left side menu is
+        needed before using action= attribute -->
+        <menuitem id="proyectojonxa_menu"
+                  name="Seguimiento FCT"
+                  parent="main_proyectojonxa_menu"/>
+        <menuitem id="activities_menu"
+                name="Activity"
+                parent="proyectojonxa_menu"
+                action="activity_list_action"/>             
+    </data>
+</odoo>
