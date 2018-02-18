@@ -20,11 +20,17 @@
             </field>
 	</record>
         
-        <!--record id="activities_pupils_rule" model="ir.rule">
-            <field name="name">Pupil Rule</field>
-            <field name="model_id232123" ref="activity_form_view"/>
-            <field name="domain_force">[('owner', '=', proyectosge.activity.pupil)]</field>
-        </record-->
+      <record model="ir.rule" id="activities_rule">
+        <field name="name">User is allowed to update his activities</field>
+        <field name="model_id" ref="model_proyectosge_activity"/>
+        <!--the user is allowed to update or delete the activities that belong
+            to him.-->
+        <field name="domain_force">[('owner','=',user.id)]</field>
+         <field name="perm_read" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
         
         <!-- search view meterle entre fechas 
         La busqueda entre fechas -->
@@ -52,6 +58,7 @@
                 <field name="date"/>
                 <field name="description"/>
                 <field name="duration"/>
+                <field name="owner"/>
             </tree>
            </field>
         </record>
@@ -66,6 +73,8 @@
                 </p>
             </field>
         </record>
+        
+      
         
         <!-- top level menu: no parent -->
         <menuitem id="main_proyectojonxa_menu"

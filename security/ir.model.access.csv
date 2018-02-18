@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_proyectosge_proyectosge,proyectosge.proyectosge,model_proyectosge_activity,base.group_user,1,1,1,1
+demo_pupil, Model pupil access,model_proyectosge_activity,base.group_user,1,1,1,1
+demo_tutor, Model tutor access,model_proyectosge_activity,base.group_user,1,0,0,0
