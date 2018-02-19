@@ -49,7 +49,7 @@
             </field>
         </record>
       
-           <!-- session tree/list view -->
+        <!-- session tree/list view -->
         <record model="ir.ui.view" id="activity_tree_view">
             <field name="name">activity.tree</field>
             <field name="model">proyectosge.activity</field>
@@ -73,6 +73,16 @@
                 </p>
             </field>
         </record>
+        <!-- PUPILS -->
+        <record model="ir.ui.view" id="users_tree_view">
+            <field name="name">users.tree</field>
+            <field name="model">res.users</field>
+            <field name="arch" type="xml">
+            <tree string="Activity Tree">
+                <field name="activities"/>
+            </tree>
+           </field>
+        </record>
         <record model="ir.actions.act_window" id="pupils_list_action">
             <field name="name">Pupils</field>
             <field name="res_model">res.users</field>
@@ -83,7 +93,18 @@
                 <p class="oe_view_nocontent_create">No pupils</p>
             </field>
         </record>
-        <!--record model="ir.actions.act_window" id="partner_list_action">
+        
+         <!-- FCTPARTNER -->
+        <record model="ir.ui.view" id="partner_tree_view">
+            <field name="name">partner.tree</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+            <tree string="Activity Tree">
+                <field name="pupils"/>
+            </tree>
+           </field>
+        </record>
+        <record model="ir.actions.act_window" id="partner_list_action">
             <field name="name">Partner</field>
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
@@ -92,7 +113,7 @@
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">No Partners</p>
             </field>
-        </record-->
+        </record>
     
 
         
@@ -106,19 +127,26 @@
         <menuitem id="proyectojonxa_menu"
                   name="Seguimiento FCT"
                   parent="main_proyectojonxa_menu"/>
+        
+        <!-- Second level menu for activities -->
         <menuitem id="activities_menu"
                 name="Activity"
                 parent="proyectojonxa_menu"
-                action="activity_list_action"/>  
+                action="activity_list_action"
+                groups="group_pupil"/>  
         
+        <!-- Second level menu for pupils -->
         <menuitem id="pupils_menu" 
                   name="Pupils" 
                   parent="proyectojonxa_menu"
-                  action="pupils_list_action"/>
-        
-        <!--menuitem id="pupils_menu" 
+                  action="pupils_list_action"
+                  groups="group_tutor"/>
+                  
+        <!-- Second level menu for fctPartners -->
+        <menuitem id="pupils_menu" 
                   name="Partner" 
                   parent="proyectojonxa_menu"
-                  action="partner_list_action"/-->    
+                  action="partner_list_action"
+                  groups="group_tutor"/>    
     </data>
 </odoo>
