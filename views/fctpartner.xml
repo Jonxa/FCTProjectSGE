@@ -11,6 +11,7 @@
                     <page string="FCT Partner">
                         <group>
                             <field name="isFCTPartner"/>
+                            <field name="pupils"/>
                         </group>
                     </page>
                 </notebook>

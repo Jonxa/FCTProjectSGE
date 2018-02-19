@@ -73,6 +73,28 @@
                 </p>
             </field>
         </record>
+        <record model="ir.actions.act_window" id="pupils_list_action">
+            <field name="name">Pupils</field>
+            <field name="res_model">res.users</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('isPupil','=','True')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">No pupils</p>
+            </field>
+        </record>
+        <!--record model="ir.actions.act_window" id="partner_list_action">
+            <field name="name">Partner</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('isFCTPartner','=','True')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">No Partners</p>
+            </field>
+        </record-->
+    
+
         
       
         
@@ -87,6 +109,16 @@
         <menuitem id="activities_menu"
                 name="Activity"
                 parent="proyectojonxa_menu"
-                action="activity_list_action"/>             
+                action="activity_list_action"/>  
+        
+        <menuitem id="pupils_menu" 
+                  name="Pupils" 
+                  parent="proyectojonxa_menu"
+                  action="pupils_list_action"/>
+        
+        <!--menuitem id="pupils_menu" 
+                  name="Partner" 
+                  parent="proyectojonxa_menu"
+                  action="partner_list_action"/-->    
     </data>
 </odoo>
