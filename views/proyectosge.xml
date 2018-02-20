@@ -132,8 +132,7 @@
         <menuitem id="activities_menu"
                 name="Activity"
                 parent="proyectojonxa_menu"
-                action="activity_list_action"
-                groups="group_pupil"/>  
+                action="activity_list_action"/>  
         
         <!-- Second level menu for pupils -->
         <menuitem id="pupils_menu" 
@@ -143,7 +142,7 @@
                   groups="group_tutor"/>
                   
         <!-- Second level menu for fctPartners -->
-        <menuitem id="pupils_menu" 
+        <menuitem id="partner_menu" 
                   name="Partner" 
                   parent="proyectojonxa_menu"
                   action="partner_list_action"

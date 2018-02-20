@@ -6,8 +6,8 @@ from odoo import models, fields, api,exceptions
 class Usuario(models.Model):
     _inherit = 'res.users'
 
-    isPupil = fields.Boolean("Pupil",default=False)
-    isTutor = fields.Boolean("Tutor",default=False)
+    isPupil = fields.Boolean("isPupil",default=False)
+    isTutor = fields.Boolean("isTutor",default=False)
 
     activities = fields.One2many('proyectosge.activity','owner', string="Activities")
     

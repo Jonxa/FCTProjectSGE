@@ -12,9 +12,9 @@
                         <group>
                             <field name="isPupil" attrs="{'invisible': [('isTutor','=' ,True)]}"/>
                             <field name="isTutor" attrs="{'invisible': [('isPupil', '=' ,True)]}"/>
-                            <field name="tutor" attrs="{'invisible': [('isPupil', '=', False)]}"/>
-                            <field name="pupils" attrs="{'invisible': [('isTutor', '=', False)]}"/>                     
-                            <field name="company" attrs="{'invisible': [('isPupil', '=' ,False)]}"/>
+                            <field name="tutor" domain="[('isTutor', '=',True)]" attrs="{'invisible': [('isPupil', '=', False)]}"/>
+                            <field name="pupils" readonly="1" attrs="{'invisible': [('isTutor', '=', False)]}"/>                     
+                            <field name="company" domain="[('isFCTPartner', '=',True)]" attrs="{'invisible': [('isPupil', '=' ,False)]}"/>
                             <field name="activities" attrs="{'invisible': [('isPupil', '=' ,False)]}"/>
                         </group>
                     </page>

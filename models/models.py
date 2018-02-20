@@ -32,7 +32,7 @@ class Activity(models.Model):
 #        for activity in self.search([('user_id','=',self.user_id)]):
 #            total_duration = total_duration + activity.duration
 #            if total_duration > 350:
-#                raise exceptions.ValidationError('La duración máxima del conjunto de actividades es de 350 horas.')
+#               raise exceptions.ValidationError('La duración máxima del conjunto de actividades es de 350 horas.')
             
 #    @api.constrains('duration')
 #    def _check_day_duration(self):
