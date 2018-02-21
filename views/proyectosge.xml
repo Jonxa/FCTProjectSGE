@@ -20,16 +20,7 @@
             </field>
 	</record>
         
-       <!--the user is allowed to update or delete the activities that belong to him.-->  
-      <record model="ir.rule" id="activities_rule">
-        <field name="name">User is allowed to update his activities</field>
-        <field name="model_id" ref="model_proyectosge_activity"/>
-        <field name="domain_force">[('owner','=',user.id)]</field>
-         <field name="perm_read" eval="False"/>
-        <field name="perm_create" eval="False"/>
-        <field name="perm_write" eval="True"/>
-        <field name="perm_unlink" eval="True"/>
-    </record>
+    
         
         <!-- search view meterle entre fechas 
         La busqueda entre fechas -->
@@ -94,16 +85,7 @@
                 <p class="oe_view_nocontent_create">No pupils</p>
             </field>
         </record>
-        <!-- Tutor only view his pupils-->
-        <record model="ir.rule" id="pupils_rule">
-            <field name="name">Tutor only view his pupils</field>
-            <field name="model_id" ref="model_res_users"/>
-            <field name="domain_force">[('tutor','=',user.id)]</field>
-             <field name="perm_read" eval="True"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_unlink" eval="False"/>
-        </record>
+        
         
          <!-- FCTPARTNER -->
         <record model="ir.ui.view" id="partner_tree_view">

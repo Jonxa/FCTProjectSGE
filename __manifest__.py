@@ -32,6 +32,7 @@
         'views/templates.xml',
         'views/proyectosge.xml',
         'views/fctpartner.xml',
+        'views/rules.xml',
         'views/usuario.xml',
         'views/reportActivity.xml',
     ],

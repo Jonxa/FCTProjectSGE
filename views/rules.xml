@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
-   
+       <!--Pupil only view his activities-->  
+        <record model="ir.rule" id="activities_rule">
+            <field name="name">Pupils only can see his own activities</field>
+            <field name="model_id" ref="model_proyectosge_activity"/>
+            <field name="groups" eval="[(4, ref('group_pupil'))]"/>
+            <field name="domain_force">[('owner','=',user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        
+        <!-- Tutor only view his pupil activities  -->
+        <record model="ir.rule" id="activities_tutor_rule">
+            <field name="name">Tutor only see his pupil activities</field>
+            <field name="model_id" ref="model_proyectosge_activity"/>
+            <field name="groups" eval="[(4, ref('group_tutor'))]"/>
+            <field name="domain_force">[('owner','=',self.pupils)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+         
+        <!-- Tutor only view his pupils-->
+        <record model="ir.rule" id="pupils_rule">
+            <field name="name">Tutor only view his pupils</field>
+            <field name="model_id" ref="model_res_users"/>
+            <field name="domain_force">[('tutor','=',user.id)]</field>
+             <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
   </data>
 </odoo>
