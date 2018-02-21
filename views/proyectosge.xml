@@ -77,10 +77,11 @@
         <record model="ir.ui.view" id="users_tree_view">
             <field name="name">users.tree</field>
             <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_simple_form"/>
             <field name="arch" type="xml">
-            <tree string="Activity Tree">
-                <field name="activities"/>
-            </tree>
+                <group>
+                	<field name="activities"/>
+            	</group>
            </field>
         </record>
         <record model="ir.actions.act_window" id="pupils_list_action">
@@ -132,7 +133,8 @@
         <menuitem id="activities_menu"
                 name="Activity"
                 parent="proyectojonxa_menu"
-                action="activity_list_action"/>  
+                action="activity_list_action"
+                groups="group_tutor,group_pupil"/> 
         
         <!-- Second level menu for pupils -->
         <menuitem id="pupils_menu" 
