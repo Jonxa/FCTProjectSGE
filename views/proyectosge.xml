@@ -20,11 +20,10 @@
             </field>
 	</record>
         
+       <!--the user is allowed to update or delete the activities that belong to him.-->  
       <record model="ir.rule" id="activities_rule">
         <field name="name">User is allowed to update his activities</field>
         <field name="model_id" ref="model_proyectosge_activity"/>
-        <!--the user is allowed to update or delete the activities that belong
-            to him.-->
         <field name="domain_force">[('owner','=',user.id)]</field>
          <field name="perm_read" eval="False"/>
         <field name="perm_create" eval="False"/>
@@ -52,6 +51,7 @@
         <!-- session tree/list view -->
         <record model="ir.ui.view" id="activity_tree_view">
             <field name="name">activity.tree</field>
+            <field name="model_id" ref="model_proyectosge_activity"/>
             <field name="model">proyectosge.activity</field>
             <field name="arch" type="xml">
             <tree string="Activity Tree">
@@ -84,15 +84,26 @@
             	</group>
            </field>
         </record>
+        
         <record model="ir.actions.act_window" id="pupils_list_action">
             <field name="name">Pupils</field>
             <field name="res_model">res.users</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">[('isPupil','=','True')]</field>
+<!--            <field name="domain">[('tutor','=','user.id')]</field>-->
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">No pupils</p>
             </field>
+        </record>
+        <!-- Tutor only view his pupils-->
+        <record model="ir.rule" id="pupils_rule">
+            <field name="name">Tutor only view his pupils</field>
+            <field name="model_id" ref="model_res_users"/>
+            <field name="domain_force">[('tutor','=',user.id)]</field>
+             <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
         </record>
         
          <!-- FCTPARTNER -->

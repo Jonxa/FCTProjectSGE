@@ -26,13 +26,13 @@ class Activity(models.Model):
             if r.duration < 0:
                 raise exceptions.ValidationError("A activity can´t be less than 0 hours ")
                  
-#    @api.constrains('duration')
-#    def _check_total_duration(self):
-#        total_duration = 0
-#        for activity in self.search([('user_id','=',self.user_id)]):
-#            total_duration = total_duration + activity.duration
-#            if total_duration > 350:
-#               raise exceptions.ValidationError('La duración máxima del conjunto de actividades es de 350 horas.')
+    @api.constrains('duration')
+    def _check_total_duration(self):
+        total_duration = 0
+        for activity in self.search([('owner','=',self.owner.id)]):
+            total_duration = total_duration + activity.duration
+            if total_duration > 350:
+               raise exceptions.ValidationError('La duración máxima del conjunto de actividades es de 350 horas.')
             
 #    @api.constrains('duration')
 #    def _check_day_duration(self):
